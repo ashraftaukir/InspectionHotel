@@ -1,12 +1,14 @@
 package com.taukir.test.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.taukir.test.R
 import com.taukir.test.adapter.InspectionAdapter
 import com.taukir.test.databinding.ActivityMainBinding
 import com.taukir.test.interfaces.OnClickListener
+import com.taukir.test.interfaces.OnSwipeTouchListener
 import com.taukir.test.models.InspectionModel
 import com.taukir.test.utils.ClickFrom
 
@@ -34,6 +36,18 @@ class MainActivity : AppCompatActivity(),OnClickListener {
         binding.inspectionTypeAdapter = inspectionAdapter
         binding.executePendingBindings()
         inspectionAdapter.submitList(inspectionList)
+
+
+
+        binding.testTv.setOnTouchListener(object : OnSwipeTouchListener() {
+            override fun onSwipeLeft() {
+                Log.d("ViewSwipe", "Left")
+            }
+
+            override fun onSwipeRight() {
+                Log.d("ViewSwipe", "Right")
+            }
+        })
 
     }
 

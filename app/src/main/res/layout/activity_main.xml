@@ -22,6 +22,16 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.MainActivity">
 
+        <TextView
+            android:id="@+id/testTv"
+            android:text="test"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rsv_search_list"
             android:layout_width="match_parent"
@@ -31,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/testTv"
             tools:itemCount="10"
             tools:listitem="@layout/inspection_item_row" />
 
