@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="inspection">Inspections</string>
+    <string name="inspection_title">Inspection Title</string>
+    <string name="inspection_details">Vacation For Holiday</string>
+    <string name="date">19,Feb</string>
+</resources>
