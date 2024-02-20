@@ -149,7 +149,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
             ClickFrom.NavigateToBottomSheet.name -> {
                 showBottomSheetDialog()
-
             }
 
             ClickFrom.OpenCloseCleanlinessList.name -> {
