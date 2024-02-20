@@ -1,8 +1,8 @@
 package com.taukir.test.ui
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -119,6 +119,27 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     }
 
+    override fun itemClick(itemData: Any, clickFrom: ClickFrom) {
+        when (clickFrom.name) {
+            ClickFrom.FirstButtonClick.name -> {
+
+                if(itemData.toString() == "red"){
+                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#E45233"))
+                }else if(itemData.toString() == "ash"){
+                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#848485"))
+                }else if(itemData.toString() == "green"){
+                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#55CC28"))
+                }else{
+                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#FFA500"))
+                }
+
+                dialogBinding.isCleanlinessBarVisible = true
+                dialogBinding.isCleanlinessButtonVisible = false
+
+            }
+        }
+    }
+
 
     override fun viewClick(clickFrom: ClickFrom) {
         when (clickFrom.name) {
@@ -166,9 +187,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 //        setDialogBinding()
         bottomSheetDialog.show()
 
-        dialogBinding.cleannessFirstItemConstraintLayout.setOnTouchListener(object : OnSwipeTouchListener() {
+        dialogBinding.cleannessFirstItemConstraintLayout.setOnTouchListener(object :
+            OnSwipeTouchListener() {
             override fun onSwipeLeft() {
-                dialogBinding.differentBtnConstraintLayout.visibility = View.VISIBLE
+                dialogBinding.cleanlinessBtnConstraintLayout.visibility = View.VISIBLE
             }
 
             override fun onSwipeRight() {
