@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="com.taukir.test.interfaces.OnClickListener" />
+
+        <import type="com.taukir.test.utils.ClickFrom" />
+
+
+        <variable
+            name="CleanlinessAdapter"
+            type="com.taukir.test.adapter.CleanlinessAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/guestRoomTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="@string/guest_room_101"
+            android:textColor="@color/light_black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/backImg"
+            android:layout_width="10dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/back_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/guestRoomTv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guestRoomTv" />
+
+        <TextView
+            android:id="@+id/hotelTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/holiday_in_express_franklin"
+            android:textColor="@color/light_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/backImg"
+            app:layout_constraintTop_toBottomOf="@+id/guestRoomTv" />
+
+        <TextView
+            android:id="@+id/checkInDateTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/in_progress_19_02_2024_at_11_37_am_by_david"
+            android:textColor="@color/ash_color"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/backImg"
+            app:layout_constraintTop_toBottomOf="@+id/hotelTv" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cleanlinessConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/inspection_bg"
+            android:onClick="@{() -> onClick.viewClick(ClickFrom.NavigateToBottomSheet)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkInDateTv">
+
+            <TextView
+                android:id="@+id/cleanlinessTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/cleanliness"
+                android:textColor="@color/light_black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/cleanlinessImg"
+                android:layout_width="10dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/back_btn"
+                app:layout_constraintBottom_toBottomOf="@+id/cleanlinessTitleTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cleanlinessTitleTv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cleanliness_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adapter="@{CleanlinessAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cleanlinessConstraintLayout"
+            tools:itemCount="3"
+            tools:listitem="@layout/cleanliness_item_row" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

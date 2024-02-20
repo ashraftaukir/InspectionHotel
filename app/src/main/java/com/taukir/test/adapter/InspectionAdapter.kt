@@ -34,6 +34,8 @@ class InspectionAdapter(var clickListener: OnClickListener) :
     override fun onBindViewHolder(holder: InspectionAdapterViewHolder, position: Int) {
         val inspectionItem = getItem(position)
         holder.binding.inspectionDetail = inspectionItem
+        holder.binding.onClick = clickListener
+
     }
 
     class InspectionAdapterViewHolder(var binding: InspectionItemRowBinding) :

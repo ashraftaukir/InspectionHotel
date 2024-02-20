@@ -5,11 +5,11 @@
 
     <data>
 
-        <!--        <variable-->
-        <!--            name="onClick"-->
-        <!--            type="com.localstreet.interfaces.OnClickLisner" />-->
+        <variable
+            name="onClick"
+            type="com.taukir.test.interfaces.OnClickListener" />
 
-        <!--        <import type="com.localstreet.models.ClickFrom" />-->
+        <import type="com.taukir.test.utils.ClickFrom" />
 
 
         <variable
@@ -36,8 +36,8 @@
             android:id="@+id/differentBtnConstraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/testTv">
 
             <TextView
@@ -46,6 +46,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/red_btn_bg"
                 android:gravity="center"
+                android:onClick="@{() -> onClick.viewClick(ClickFrom.ButtonClick)}"
                 android:text="X"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -81,8 +82,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/ashImg"
                 app:layout_constraintEnd_toEndOf="@+id/ashImg"
                 app:layout_constraintStart_toStartOf="@+id/ashImg"
-                app:layout_constraintTop_toTopOf="@+id/ashImg"
-                />
+                app:layout_constraintTop_toTopOf="@+id/ashImg" />
+
             <ImageView
                 android:id="@+id/greenImg"
                 android:layout_width="50dp"
@@ -107,7 +108,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rsv_search_list"
+            android:id="@+id/inspection_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:adapter="@{inspectionTypeAdapter}"
