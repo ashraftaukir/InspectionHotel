@@ -161,7 +161,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             }
 
             ClickFrom.OpenCloseBedroomsList.name -> {
-
 //                dialogBinding.bedroomsRecyclerView.visibility=View.VISIBLE
             }
 
