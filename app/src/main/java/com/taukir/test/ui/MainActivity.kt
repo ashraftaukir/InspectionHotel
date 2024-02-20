@@ -42,13 +42,10 @@ class MainActivity : AppCompatActivity(),OnClickListener {
 
         binding.testTv.setOnTouchListener(object : OnSwipeTouchListener() {
             override fun onSwipeLeft() {
-                Log.d("ViewSwipe", "Left")
-
-                binding.redBtn.visibility= View.VISIBLE
+                binding.differentBtnConstraintLayout.visibility= View.VISIBLE
             }
 
             override fun onSwipeRight() {
-                Log.d("ViewSwipe", "Right")
             }
         })
 

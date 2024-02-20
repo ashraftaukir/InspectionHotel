@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/testTv">
 
             <TextView
@@ -62,6 +63,45 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toStartOf="@+id/redBtn"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ashImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ash_btn_bg"
+                app:layout_constraintEnd_toStartOf="@+id/orangeBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/blockImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ash_btn_bg"
+                android:src="@drawable/block"
+                app:layout_constraintBottom_toBottomOf="@+id/ashImg"
+                app:layout_constraintEnd_toEndOf="@+id/ashImg"
+                app:layout_constraintStart_toStartOf="@+id/ashImg"
+                app:layout_constraintTop_toTopOf="@+id/ashImg"
+                />
+            <ImageView
+                android:id="@+id/greenImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/green_btn_bg"
+                app:layout_constraintEnd_toStartOf="@+id/ashImg"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/doneImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/done"
+                android:src="@drawable/done"
+                app:layout_constraintBottom_toBottomOf="@+id/greenImg"
+                app:layout_constraintEnd_toEndOf="@+id/greenImg"
+                app:layout_constraintStart_toStartOf="@+id/greenImg"
+                app:layout_constraintTop_toTopOf="@+id/greenImg" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
