@@ -21,7 +21,6 @@ import com.taukir.test.models.CleanlinessModel
 import com.taukir.test.models.InspectionModel
 import com.taukir.test.utils.ClickFrom
 
-
 class MainActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
