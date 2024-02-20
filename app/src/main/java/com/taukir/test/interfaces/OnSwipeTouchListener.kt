@@ -59,7 +59,6 @@ open class OnSwipeTouchListener : View.OnTouchListener {
                 Log.d("exception", exception.toString())
                 exception.printStackTrace()
             }
-
             return result
         }
     }
