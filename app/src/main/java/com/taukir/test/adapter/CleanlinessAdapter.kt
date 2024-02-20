@@ -1,12 +1,15 @@
 package com.taukir.test.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.taukir.test.databinding.CleanlinessItemRowBinding
 import com.taukir.test.interfaces.OnClickListener
+import com.taukir.test.interfaces.OnSwipeTouchListener
 import com.taukir.test.models.CleanlinessModel
 
 
@@ -35,6 +38,17 @@ class CleanlinessAdapter(var clickListener: OnClickListener) :
         val cleanlinessItem = getItem(position)
         holder.binding.cleanlinessDetail = cleanlinessItem
         holder.binding.onClick = clickListener
+        holder.binding.cleannessItemConstraintLayout.setOnTouchListener(object : OnSwipeTouchListener() {
+            override fun onSwipeLeft() {
+                Log.d("ViewSwipe", "onSwipeLeft: ")
+                holder.binding.differentBtnConstraintLayout.visibility = View.VISIBLE
+            }
+
+            override fun onSwipeRight() {
+                Log.d("ViewSwipe", "onSwipeRight")
+
+            }
+        })
 
     }
 

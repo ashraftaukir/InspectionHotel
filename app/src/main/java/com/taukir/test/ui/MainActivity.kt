@@ -115,14 +115,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
 
 
-        binding.testTv.setOnTouchListener(object : OnSwipeTouchListener() {
-            override fun onSwipeLeft() {
-                binding.differentBtnConstraintLayout.visibility = View.VISIBLE
-            }
-
-            override fun onSwipeRight() {
-            }
-        })
+//        binding.testTv.setOnTouchListener(object : OnSwipeTouchListener() {
+//            override fun onSwipeLeft() {
+//                binding.differentBtnConstraintLayout.visibility = View.VISIBLE
+//            }
+//
+//            override fun onSwipeRight() {
+//            }
+//        })
 
     }
 
@@ -139,6 +139,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 showBottomSheetDialog()
 
             }
+
+            ClickFrom.OpenCloseCleanlinessList.name -> {
+
+                dialogBinding.cleanlinessRecyclerView.visibility=View.VISIBLE
+            }
         }
 
     }
@@ -150,6 +155,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             BottomSheetBinding.inflate(LayoutInflater.from(context))
 //        bottomSheetDialog.setCancelable(false)
         bottomSheetDialog.setContentView(dialogBinding.root)
+        dialogBinding.onClick=this
         setDialogBinding()
         bottomSheetDialog.show()
     }
