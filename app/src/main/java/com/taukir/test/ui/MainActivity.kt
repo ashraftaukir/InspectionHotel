@@ -24,7 +24,6 @@ import com.taukir.test.utils.ClickFrom
 
 class MainActivity : AppCompatActivity(), OnClickListener {
 
-
     private lateinit var binding: ActivityMainBinding
     private var inspectionList: ArrayList<InspectionModel> = ArrayList()
     private var cleanlinessList: ArrayList<CleanlinessModel> = ArrayList()
