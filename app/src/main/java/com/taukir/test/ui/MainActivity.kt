@@ -2,12 +2,15 @@ package com.taukir.test.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.taukir.test.R
+import com.taukir.test.adapter.BedRoomsAdapter
 import com.taukir.test.adapter.CleanlinessAdapter
 import com.taukir.test.adapter.InspectionAdapter
 import com.taukir.test.databinding.ActivityMainBinding
@@ -27,9 +30,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private var cleanlinessList: ArrayList<CleanlinessModel> = ArrayList()
     private lateinit var inspectionAdapter: InspectionAdapter
     private lateinit var cleanlinessAdapter: CleanlinessAdapter
-    lateinit var bottomSheetDialog: BottomSheetDialog
-    lateinit var context: Context
-    lateinit var dialogBinding: BottomSheetBinding
+    private lateinit var bedRoomsAdapter: BedRoomsAdapter
+    private lateinit var bottomSheetDialog: BottomSheetDialog
+    private lateinit var context: Context
+    private lateinit var dialogBinding: BottomSheetBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,25 +117,12 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         binding.executePendingBindings()
         inspectionAdapter.submitList(inspectionList)
 
-
-
-//        binding.testTv.setOnTouchListener(object : OnSwipeTouchListener() {
-//            override fun onSwipeLeft() {
-//                binding.differentBtnConstraintLayout.visibility = View.VISIBLE
-//            }
-//
-//            override fun onSwipeRight() {
-//            }
-//        })
-
     }
 
 
     override fun viewClick(clickFrom: ClickFrom) {
         when (clickFrom.name) {
             ClickFrom.ButtonClick.name -> {
-
-                binding.differentBtnConstraintLayout.visibility = View.GONE
 
             }
 
@@ -142,8 +133,24 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
             ClickFrom.OpenCloseCleanlinessList.name -> {
 
-                dialogBinding.cleanlinessRecyclerView.visibility=View.VISIBLE
+                if (dialogBinding.cleannessFirstItemConstraintLayout.isVisible) {
+                    dialogBinding.cleannessFirstItemConstraintLayout.visibility = View.GONE
+                } else {
+                    dialogBinding.cleannessFirstItemConstraintLayout.visibility = View.VISIBLE
+                }
             }
+
+            ClickFrom.OpenCloseBedroomsList.name -> {
+
+//                dialogBinding.bedroomsRecyclerView.visibility=View.VISIBLE
+            }
+
+
+            ClickFrom.CancelBottomSheet.name -> {
+                bottomSheetDialog.dismiss()
+            }
+
+
         }
 
     }
@@ -153,11 +160,23 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         bottomSheetDialog = BottomSheetDialog(context)
         dialogBinding =
             BottomSheetBinding.inflate(LayoutInflater.from(context))
-//        bottomSheetDialog.setCancelable(false)
+        bottomSheetDialog.setCancelable(false)
         bottomSheetDialog.setContentView(dialogBinding.root)
-        dialogBinding.onClick=this
-        setDialogBinding()
+        dialogBinding.onClick = this
+//        setDialogBinding()
         bottomSheetDialog.show()
+
+        dialogBinding.cleannessFirstItemConstraintLayout.setOnTouchListener(object : OnSwipeTouchListener() {
+            override fun onSwipeLeft() {
+                dialogBinding.differentBtnConstraintLayout.visibility = View.VISIBLE
+            }
+
+            override fun onSwipeRight() {
+
+            }
+        })
+
+
     }
 
     private fun setDialogBinding() {
@@ -165,6 +184,15 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         dialogBinding.cleanlinessAdapter = cleanlinessAdapter
         dialogBinding.onClick = this
         cleanlinessAdapter.submitList(cleanlinessList)
+
+
+        bedRoomsAdapter = BedRoomsAdapter(this)
+        dialogBinding.bedRoomsAdapter = bedRoomsAdapter
+        dialogBinding.onClick = this
+        bedRoomsAdapter.submitList(cleanlinessList)
+        dialogBinding.executePendingBindings()
+
+
         dialogBinding.executePendingBindings()
     }
 }

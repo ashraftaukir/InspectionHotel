@@ -13,8 +13,8 @@ import com.taukir.test.interfaces.OnSwipeTouchListener
 import com.taukir.test.models.CleanlinessModel
 
 
-class CleanlinessAdapter(private var clickListener: OnClickListener) :
-    ListAdapter<CleanlinessModel, CleanlinessAdapter.CleanlinessAdapterViewHolder>(Companion) {
+class BedRoomsAdapter(private var clickListener: OnClickListener) :
+    ListAdapter<CleanlinessModel, BedRoomsAdapter.BedRoomsAdapterViewHolder>(Companion) {
 
     companion object : DiffUtil.ItemCallback<CleanlinessModel>() {
         override fun areItemsTheSame(
@@ -28,13 +28,13 @@ class CleanlinessAdapter(private var clickListener: OnClickListener) :
         ): Boolean = oldItem.id == newItem.id
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CleanlinessAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BedRoomsAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = CleanlinessItemRowBinding.inflate(layoutInflater, parent, false)
-        return CleanlinessAdapterViewHolder(binding)
+        return BedRoomsAdapterViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CleanlinessAdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BedRoomsAdapterViewHolder, position: Int) {
         val cleanlinessItem = getItem(position)
         holder.binding.cleanlinessDetail = cleanlinessItem
         holder.binding.onClick = clickListener
@@ -52,7 +52,7 @@ class CleanlinessAdapter(private var clickListener: OnClickListener) :
 
     }
 
-    class CleanlinessAdapterViewHolder(var binding: CleanlinessItemRowBinding) :
+    class BedRoomsAdapterViewHolder(var binding: CleanlinessItemRowBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 }

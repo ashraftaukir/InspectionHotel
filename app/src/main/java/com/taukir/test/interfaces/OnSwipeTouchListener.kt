@@ -1,5 +1,6 @@
 package com.taukir.test.interfaces
 
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -50,6 +51,7 @@ open class OnSwipeTouchListener : View.OnTouchListener {
                     // onTouch(e);
                 }
             } catch (exception: Exception) {
+                Log.d("exception", exception.toString())
                 exception.printStackTrace()
             }
 

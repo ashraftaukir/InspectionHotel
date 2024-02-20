@@ -10,7 +10,7 @@ import com.taukir.test.interfaces.OnClickListener
 import com.taukir.test.models.InspectionModel
 
 
-class InspectionAdapter(var clickListener: OnClickListener) :
+class InspectionAdapter(private var clickListener: OnClickListener) :
     ListAdapter<InspectionModel, InspectionAdapter.InspectionAdapterViewHolder>(Companion) {
 
     companion object : DiffUtil.ItemCallback<InspectionModel>() {
