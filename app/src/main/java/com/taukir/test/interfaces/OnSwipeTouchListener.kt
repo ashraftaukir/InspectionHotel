@@ -60,6 +60,7 @@ open class OnSwipeTouchListener : View.OnTouchListener {
                 exception.printStackTrace()
             }
             return result
+
         }
     }
 
