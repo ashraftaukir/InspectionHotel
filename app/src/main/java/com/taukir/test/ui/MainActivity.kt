@@ -2,6 +2,7 @@ package com.taukir.test.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.taukir.test.R
@@ -42,6 +43,8 @@ class MainActivity : AppCompatActivity(),OnClickListener {
         binding.testTv.setOnTouchListener(object : OnSwipeTouchListener() {
             override fun onSwipeLeft() {
                 Log.d("ViewSwipe", "Left")
+
+                binding.redBtn.visibility= View.VISIBLE
             }
 
             override fun onSwipeRight() {
