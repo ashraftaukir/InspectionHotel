@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var context: Context
     private lateinit var dialogBinding: BottomSheetBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
