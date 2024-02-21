@@ -1,5 +1,7 @@
 package com.taukir.test.utils
 
+import com.taukir.test.R
+import com.taukir.test.models.BannerImageModel
 import com.taukir.test.models.BedroomsModel
 import com.taukir.test.models.CleanlinessModel
 import com.taukir.test.models.InspectionModel
@@ -85,6 +87,18 @@ val bedRoomsList = listOf(
         "Every bedroom has been checked","",
         false
 
+    )
+
+)
+
+val bannerList = arrayListOf(
+    BannerImageModel(
+        "1",
+        R.drawable.dress_wallpaper
+    ),
+    BannerImageModel(
+        "2",
+        R.drawable.welcome_street
     )
 
 )

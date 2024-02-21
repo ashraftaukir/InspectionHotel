@@ -1,6 +1,7 @@
 package com.taukir.test.ui
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
@@ -167,6 +168,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         when (clickFrom.name) {
             ClickFrom.ButtonClick.name -> {
 
+                val intent = Intent(this@MainActivity, ImageActivity::class.java)
+                startActivity(intent)
 
             }
 
@@ -198,7 +201,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         bottomSheetDialog = BottomSheetDialog(context)
         dialogBinding =
             BottomSheetBinding.inflate(LayoutInflater.from(context))
-        bottomSheetDialog.setCancelable(false)
         bottomSheetDialog.setContentView(dialogBinding.root)
         dialogBinding.onClick = this
         setDialogBinding()

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="cleanliness_detail"
             type="com.taukir.test.models.CleanlinessModel" />
@@ -19,12 +20,12 @@
     </data>
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cleannessFirstItemConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:onClick="@{() -> onClick.viewClick(ClickFrom.ButtonClick)}"
         app:layout_constraintTop_toBottomOf="@+id/cleanlinessConstraintLayout">
 
         <TextView
@@ -151,8 +152,8 @@
                 android:layout_height="50dp"
                 android:background="@drawable/orange_btn_bg"
                 android:gravity="center"
-                android:text="-"
                 android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.SecondButtonClick,`cleanliness`)}"
+                android:text="-"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toStartOf="@+id/redBtn"
@@ -162,8 +163,8 @@
                 android:id="@+id/grayImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.ThirdButtonClick,`cleanliness`)}"
                 android:background="@drawable/gray_btn_bg"
+                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.ThirdButtonClick,`cleanliness`)}"
                 app:layout_constraintEnd_toStartOf="@+id/orangeBtn"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -182,8 +183,8 @@
                 android:id="@+id/greenImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.FourthButtonClick,`cleanliness`)}"
                 android:background="@drawable/green_btn_bg"
+                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.FourthButtonClick,`cleanliness`)}"
                 app:layout_constraintEnd_toStartOf="@+id/grayImg"
                 app:layout_constraintTop_toTopOf="parent" />
 
