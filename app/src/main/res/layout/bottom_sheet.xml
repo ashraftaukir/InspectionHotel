@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/in_progress_19_02_2024_at_11_37_am_by_david"
-            android:textColor="@color/ash_color"
+            android:textColor="@color/gray_color"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@id/backImg"
             app:layout_constraintTop_toBottomOf="@+id/hotelTv" />
@@ -132,57 +132,57 @@
             tools:itemCount="3"
             tools:listitem="@layout/cleanliness_item_row" />
 
-        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--            android:id="@+id/bedroomsConstraintLayout"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="40dp"-->
-        <!--            android:layout_margin="10dp"-->
-        <!--            android:background="@drawable/inspection_bg"-->
-        <!--            android:onClick="@{() -> onClick.viewClick(ClickFrom.OpenCloseBedroomsList)}"-->
-        <!--            android:visibility="gone"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/firstItemConstraintLayout">-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bedroomsConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inspection_bg"
+            android:onClick="@{() -> onClick.viewClick(ClickFrom.OpenCloseBedroomsList)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cleanliness_recyclerView">
 
-        <!--            <TextView-->
-        <!--                android:id="@+id/bedroomsTitleTv"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginStart="15dp"-->
-        <!--                android:layout_marginTop="10dp"-->
-        <!--                android:fontFamily="@font/poppins_medium"-->
-        <!--                android:text="@string/bedrooms"-->
-        <!--                android:textColor="@color/light_black"-->
-        <!--                android:textSize="12sp"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-
-        <!--            <ImageView-->
-        <!--                android:id="@+id/bedroomsImg"-->
-        <!--                android:layout_width="10dp"-->
-        <!--                android:layout_height="14dp"-->
-        <!--                android:layout_marginEnd="15dp"-->
-        <!--                android:background="@drawable/back_btn"-->
-        <!--                app:layout_constraintBottom_toBottomOf="@+id/bedroomsTitleTv"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="@+id/bedroomsTitleTv" />-->
+            <TextView
+                android:id="@+id/bedroomsTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/bedrooms"
+                android:textColor="@color/light_black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <ImageView
+                android:id="@+id/bedroomsImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/arrow_down"
+                app:layout_constraintBottom_toBottomOf="@+id/bedroomsTitleTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bedroomsTitleTv" />
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/bedrooms_recyclerView"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:adapter="@{BedRoomsAdapter}"-->
-        <!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            android:visibility="gone"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/bedroomsConstraintLayout"-->
-        <!--            tools:itemCount="3"-->
-        <!--            tools:listitem="@layout/cleanliness_item_row" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bedrooms_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adapter="@{BedRoomsAdapter}"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bedroomsConstraintLayout"
+            tools:itemCount="3"
+            tools:listitem="@layout/bedrooms_item_row" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

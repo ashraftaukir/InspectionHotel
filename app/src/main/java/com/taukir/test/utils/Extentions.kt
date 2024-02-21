@@ -1,5 +1,6 @@
 package com.taukir.test.utils
 
+import com.taukir.test.models.BedroomsModel
 import com.taukir.test.models.CleanlinessModel
 import com.taukir.test.models.InspectionModel
 
@@ -51,7 +52,7 @@ val cleanlinessList = listOf(
     ),
     CleanlinessModel(
         "2",
-        "Every inch of room has been sanitized","red",
+        "Every inch of room has been sanitized","",
 
         false
 
@@ -66,22 +67,22 @@ val cleanlinessList = listOf(
 )
 
 val bedRoomsList = listOf(
-    CleanlinessModel(
+    BedroomsModel(
         "1",
-        "Every inch of room has been sanitized",
+        "Every bedroom has been checked",
         "",
         false
     ),
-    CleanlinessModel(
+    BedroomsModel(
         "2",
-        "Every inch of room has been sanitized","red",
+        "Every bedroom has been checked","",
 
         false
 
     ),
-    CleanlinessModel(
+    BedroomsModel(
         "3",
-        "Every inch of room has been sanitized","",
+        "Every bedroom has been checked","",
         false
 
     )

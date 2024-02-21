@@ -45,7 +45,7 @@ class CleanlinessAdapter(private var clickListener: OnClickListener) :
         if (cleanlinessItem.viewBarValue == "red") {
             holder.binding.cleanlinessItemViewBar.visibility=View.VISIBLE
             holder.binding.cleanlinessItemViewBar.setBackgroundColor(Color.parseColor("#E45233"))
-        } else if (cleanlinessItem.viewBarValue == "ash") {
+        } else if (cleanlinessItem.viewBarValue == "gray") {
             holder.binding.cleanlinessItemViewBar.visibility=View.VISIBLE
             holder.binding.cleanlinessItemViewBar.setBackgroundColor(Color.parseColor("#848485"))
         } else if (cleanlinessItem.viewBarValue == "green") {
@@ -58,27 +58,9 @@ class CleanlinessAdapter(private var clickListener: OnClickListener) :
             holder.binding.cleanlinessItemViewBar.visibility=View.GONE
         }
 
-
-//        holder.binding.isCleanlinessButtonVisible=true
-//        holder.binding.bedroomsItemConstraintLayout.setOnTouchListener(object : OnSwipeTouchListener() {
-//            override fun onSwipeLeft() {
-//                Log.d("ViewSwipe", "onSwipeLeft: ")
-//                holder.binding.differentBtnConstraintLayout.visibility = View.VISIBLE
-//            }
-//
-//            override fun onSwipeRight() {
-//                Log.d("ViewSwipe", "onSwipeRight")
-//
-//            }
-//        })
-
     }
 
     class CleanlinessAdapterViewHolder(var binding: CleanlinessItemRowBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-//    fun passAllButtonStatus(isClean: Boolean,position:Int) {
-//        binding.isCleanlinessButtonVisible=isClean
-//
-//    }
 }

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="cleanliness_detail"
-            type="com.taukir.test.models.CleanlinessModel" />
+            name="bedrooms_detail"
+            type="com.taukir.test.models.BedroomsModel" />
 
         <variable
             name="onClick"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@{cleanliness_detail.title}"
+            android:text="@{bedrooms_detail.title}"
             android:textColor="@color/light_black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:visibility="@{cleanliness_detail.isButtonVisible ? View.VISIBLE:View.GONE}"
+            android:visibility="@{bedrooms_detail.isButtonVisible ? View.VISIBLE:View.GONE}"
             app:layout_constraintEnd_toEndOf="@+id/cleanlinessItemViewBar"
             app:layout_constraintTop_toBottomOf="@+id/singleLineView">
 
@@ -138,7 +138,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/red_btn_bg"
                 android:gravity="center"
-                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.FirstButtonClick,`cleanliness`)}"
+                android:onClick="@{() -> onClick.itemClick(bedrooms_detail,ClickFrom.FirstButtonClick,`bedrooms`)}"
                 android:text="X"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -152,7 +152,7 @@
                 android:background="@drawable/orange_btn_bg"
                 android:gravity="center"
                 android:text="-"
-                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.SecondButtonClick,`cleanliness`)}"
+                android:onClick="@{() -> onClick.itemClick(bedrooms_detail,ClickFrom.SecondButtonClick,`bedrooms`)}"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toStartOf="@+id/redBtn"
@@ -162,7 +162,7 @@
                 android:id="@+id/grayImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.ThirdButtonClick,`cleanliness`)}"
+                android:onClick="@{() -> onClick.itemClick(bedrooms_detail,ClickFrom.ThirdButtonClick,`bedrooms`)}"
                 android:background="@drawable/gray_btn_bg"
                 app:layout_constraintEnd_toStartOf="@+id/orangeBtn"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -182,7 +182,7 @@
                 android:id="@+id/greenImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.FourthButtonClick,`cleanliness`)}"
+                android:onClick="@{() -> onClick.itemClick(bedrooms_detail,ClickFrom.FourthButtonClick,`bedrooms`)}"
                 android:background="@drawable/green_btn_bg"
                 app:layout_constraintEnd_toStartOf="@+id/grayImg"
                 app:layout_constraintTop_toTopOf="parent" />

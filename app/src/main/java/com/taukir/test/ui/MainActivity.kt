@@ -19,11 +19,9 @@ import com.taukir.test.adapter.InspectionAdapter
 import com.taukir.test.databinding.ActivityMainBinding
 import com.taukir.test.databinding.BottomSheetBinding
 import com.taukir.test.interfaces.OnClickListener
+import com.taukir.test.models.BedroomsModel
 import com.taukir.test.models.CleanlinessModel
-import com.taukir.test.utils.ClickFrom
-import com.taukir.test.utils.ItemDecorator
-import com.taukir.test.utils.cleanlinessList
-import com.taukir.test.utils.inspectionList
+import com.taukir.test.utils.*
 
 class MainActivity : AppCompatActivity(), OnClickListener {
 
@@ -53,55 +51,113 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         binding.executePendingBindings()
     }
 
-    override fun itemClick(itemData: Any, clickFrom: ClickFrom) {
+    override fun itemClick(itemData: Any, clickFrom: ClickFrom,type:String) {
+        Log.d("bedrooms", type)
+
         when (clickFrom.name) {
             ClickFrom.FirstButtonClick.name -> {
-                itemData as CleanlinessModel
-                var index=0
-                for (item in cleanlinessList) {
-                    if (item.id == itemData.id) {
-                        cleanlinessList[index].viewBarValue = "red"
-                        break
+                if (type == "cleanliness") {
+                    itemData as CleanlinessModel
+                    var index = 0
+                    for (item in cleanlinessList) {
+                        if (item.id == itemData.id) {
+                            cleanlinessList[index].viewBarValue = "red"
+                            break
+                        }
+                        index++
                     }
-                    index++
+                    cleanlinessAdapter.notifyDataSetChanged()
+                }else if (type == "bedrooms"){
+                    Log.d("bedrooms", "itemClick: ")
+                    itemData as BedroomsModel
+                    var index = 0
+                    for (item in bedRoomsList) {
+                        if (item.id == itemData.id) {
+                            bedRoomsList[index].viewBarValue = "red"
+                            break
+                        }
+                        index++
+                    }
+                    bedRoomsAdapter.notifyDataSetChanged()
                 }
-                cleanlinessAdapter.notifyDataSetChanged()
             }
             ClickFrom.SecondButtonClick.name -> {
-                itemData as CleanlinessModel
-                var index=0
-                for (item in cleanlinessList) {
-                    if (item.id == itemData.id) {
-                        cleanlinessList[index].viewBarValue = "orange"
-                        break
+                if (type == "cleanliness") {
+                    itemData as CleanlinessModel
+                    var index = 0
+                    for (item in cleanlinessList) {
+                        if (item.id == itemData.id) {
+                            cleanlinessList[index].viewBarValue = "orange"
+                            break
+                        }
+                        index++
                     }
-                    index++
+                    cleanlinessAdapter.notifyDataSetChanged()
+                }else if (type == "bedrooms"){
+
+                    itemData as BedroomsModel
+                    var index = 0
+                    for (item in bedRoomsList) {
+                        if (item.id == itemData.id) {
+                            bedRoomsList[index].viewBarValue = "orange"
+                            break
+                        }
+                        index++
+                    }
+                    bedRoomsAdapter.notifyDataSetChanged()
                 }
-                cleanlinessAdapter.notifyDataSetChanged()
             }
             ClickFrom.ThirdButtonClick.name -> {
-                itemData as CleanlinessModel
-                var index=0
-                for (item in cleanlinessList) {
-                    if (item.id == itemData.id) {
-                        cleanlinessList[index].viewBarValue = "ash"
-                        break
+                if (type == "cleanliness") {
+                    itemData as CleanlinessModel
+                    var index = 0
+                    for (item in cleanlinessList) {
+                        if (item.id == itemData.id) {
+                            cleanlinessList[index].viewBarValue = "gray"
+                            break
+                        }
+                        index++
                     }
-                    index++
+                    cleanlinessAdapter.notifyDataSetChanged()
+                }else if (type == "bedrooms"){
+
+                    itemData as BedroomsModel
+                    var index = 0
+                    for (item in bedRoomsList) {
+                        if (item.id == itemData.id) {
+                            bedRoomsList[index].viewBarValue = "gray"
+                            break
+                        }
+                        index++
+                    }
+                    bedRoomsAdapter.notifyDataSetChanged()
                 }
-                cleanlinessAdapter.notifyDataSetChanged()
             }
             ClickFrom.FourthButtonClick.name -> {
-                itemData as CleanlinessModel
-                var index=0
-                for (item in cleanlinessList) {
-                    if (item.id == itemData.id) {
-                        cleanlinessList[index].viewBarValue = "green"
-                        break
+                if (type == "cleanliness") {
+                    itemData as CleanlinessModel
+                    var index = 0
+                    for (item in cleanlinessList) {
+                        if (item.id == itemData.id) {
+                            cleanlinessList[index].viewBarValue = "green"
+                            break
+                        }
+                        index++
                     }
-                    index++
+                    cleanlinessAdapter.notifyDataSetChanged()
+                }else if (type == "bedrooms"){
+
+                    itemData as BedroomsModel
+                    var index = 0
+                    for (item in bedRoomsList) {
+                        if (item.id == itemData.id) {
+                            bedRoomsList[index].viewBarValue = "green"
+                            break
+                        }
+                        index++
+                    }
+                    bedRoomsAdapter.notifyDataSetChanged()
                 }
-                cleanlinessAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -120,6 +176,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
             ClickFrom.OpenCloseCleanlinessList.name -> {
                 dialogBinding.cleanlinessRecyclerView.visibility=View.VISIBLE
+            }
+
+
+            ClickFrom.OpenCloseBedroomsList.name -> {
+                dialogBinding.bedroomsRecyclerView.visibility=View.VISIBLE
             }
 
 
@@ -150,7 +211,13 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         dialogBinding.onClick = this
         cleanlinessAdapter.submitList(cleanlinessList)
 
+        bedRoomsAdapter = BedRoomsAdapter(this)
+        dialogBinding.bedRoomsAdapter = bedRoomsAdapter
+        dialogBinding.onClick = this
+        bedRoomsAdapter.submitList(bedRoomsList)
+
         initializeCleanlinessListener()
+        initializeBedRoomsListener()
         dialogBinding.executePendingBindings()
     }
 
@@ -193,7 +260,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     textColorFromEndToStart = defaultWhiteColor,
                     iconTintColorFromStartToEnd = defaultWhiteColor,
                     iconTintColorFromEndToStart = defaultWhiteColor,
-                    iconResIdFromStartToEnd = R.drawable.ash_btn_bg,
+                    iconResIdFromStartToEnd = R.drawable.gray_btn_bg,
                     iconResIdFromEndToStart = R.drawable.green_btn_bg
                 )
 
@@ -221,5 +288,76 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         }
         itemTouchHelper = ItemTouchHelper(simpleCallback)
         itemTouchHelper.attachToRecyclerView(dialogBinding.cleanlinessRecyclerView)
+    }
+
+
+
+    private fun initializeBedRoomsListener() {
+        val simpleCallback = object :
+            ItemTouchHelper.SimpleCallback(
+                0,
+                ItemTouchHelper.LEFT
+            ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = false
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+
+                val colorAlert =
+                    ContextCompat.getColor(this@MainActivity, R.color.purple_700)
+                val teal200 =
+                    ContextCompat.getColor(this@MainActivity, R.color.purple_700)
+                val defaultWhiteColor =
+                    ContextCompat.getColor(this@MainActivity, R.color.white)
+
+                // This is where to start decorating
+                ItemDecorator.Builder(c, recyclerView, viewHolder, dX, actionState).set(
+                    backgroundColorFromStartToEnd = colorAlert,
+                    backgroundColorFromEndToStart = teal200,
+                    textFromStartToEnd = "",
+                    textFromEndToStart = "",
+                    textColorFromStartToEnd = defaultWhiteColor,
+                    textColorFromEndToStart = defaultWhiteColor,
+                    iconTintColorFromStartToEnd = defaultWhiteColor,
+                    iconTintColorFromEndToStart = defaultWhiteColor,
+                    iconResIdFromStartToEnd = R.drawable.gray_btn_bg,
+                    iconResIdFromEndToStart = R.drawable.green_btn_bg
+                )
+
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                when (direction) {
+                    ItemTouchHelper.LEFT -> {
+                        bedRoomsList[position].isButtonVisible = true
+                        bedRoomsAdapter.notifyDataSetChanged()
+                    }
+                }
+                bedRoomsAdapter.notifyItemChanged(position)
+            }
+        }
+        itemTouchHelper = ItemTouchHelper(simpleCallback)
+        itemTouchHelper.attachToRecyclerView(dialogBinding.bedroomsRecyclerView)
     }
 }
