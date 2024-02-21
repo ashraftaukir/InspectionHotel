@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
-
         <variable
             name="cleanliness_detail"
             type="com.taukir.test.models.CleanlinessModel" />
@@ -16,139 +14,194 @@
 
         <import type="com.taukir.test.utils.ClickFrom" />
 
+        <import type="android.view.View" />
 
     </data>
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bedroomsItemConstraintLayout"
+        android:id="@+id/cleannessFirstItemConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-
-    <TextView
-        android:id="@+id/sanitizedTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@{cleanliness_detail.title}"
-        android:textColor="@color/light_black"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sanitizedDetailsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/poppins_light"
-        android:text="@string/every_inch_of_room_has_been_sanitized"
-        android:textColor="@color/light_black"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/sanitizedTv"
-        app:layout_constraintTop_toBottomOf="@+id/sanitizedTv" />
-
-    <View
-        android:id="@+id/viewBar"
-        android:layout_width="5dp"
-        android:layout_height="0dp"
-        android:background="@color/orange_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/singleLineView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/orange_btn" />
-
-
-    <View
-        android:id="@+id/singleLineView"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/ash_color_light"
-        app:layout_constraintStart_toStartOf="@+id/sanitizedTv"
-        app:layout_constraintEnd_toStartOf="@+id/viewBar"
-        app:layout_constraintTop_toBottomOf="@+id/sanitizedDetailsTv" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/differentBtnConstraintLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/singleLineView">
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/cleanlinessConstraintLayout">
 
         <TextView
-            android:id="@+id/redBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/red_btn_bg"
-            android:gravity="center"
-            android:onClick="@{() -> onClick.viewClick(ClickFrom.ButtonClick)}"
-            android:text="X"
-            android:textColor="@color/white"
-            android:textSize="16sp"
+            android:id="@+id/sanitizedTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@{cleanliness_detail.title}"
+            android:textColor="@color/light_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ratingImg"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/star"
+            app:layout_constraintStart_toStartOf="@+id/sanitizedTv"
+            app:layout_constraintTop_toBottomOf="@+id/sanitizedTv" />
+
+        <TextView
+            android:id="@+id/ratingTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="3"
+            android:textColor="@color/ash_color_light"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/ratingImg"
+            app:layout_constraintTop_toTopOf="@+id/ratingImg" />
+
+        <ImageView
+            android:id="@+id/attachImg"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/attach"
+            app:layout_constraintStart_toEndOf="@+id/ratingTv"
+            app:layout_constraintTop_toBottomOf="@+id/sanitizedTv" />
+
+        <TextView
+            android:id="@+id/attachTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="0"
+            android:textColor="@color/ash_color_light"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/attachImg"
+            app:layout_constraintTop_toTopOf="@+id/ratingImg" />
+
+        <ImageView
+            android:id="@+id/commentImg"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/comment"
+            app:layout_constraintStart_toEndOf="@+id/attachTv"
+            app:layout_constraintTop_toBottomOf="@+id/sanitizedTv" />
+
+        <TextView
+            android:id="@+id/commentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="0"
+            android:textColor="@color/ash_color_light"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/commentImg"
+            app:layout_constraintTop_toTopOf="@+id/ratingImg" />
+
+        <View
+            android:id="@+id/cleanlinessItemViewBar"
+            android:layout_width="5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/singleLineView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/orange_btn" />
 
-        <TextView
-            android:id="@+id/orangeBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/orange_btn_bg"
-            android:gravity="center"
-            android:text="-"
-            android:onClick="@{() -> onClick.viewClick(ClickFrom.ButtonClick)}"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toStartOf="@+id/redBtn"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ashImg"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="@{() -> onClick.viewClick(ClickFrom.ButtonClick)}"
-            android:background="@drawable/ash_btn_bg"
-            app:layout_constraintEnd_toStartOf="@+id/orangeBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/singleLineView"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ash_color_light"
+            app:layout_constraintEnd_toEndOf="@+id/cleanlinessItemViewBar"
+            app:layout_constraintStart_toStartOf="@+id/sanitizedTv"
+            app:layout_constraintTop_toBottomOf="@+id/ratingImg" />
 
-        <ImageView
-            android:id="@+id/blockImg"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/ash_btn_bg"
-            android:src="@drawable/block"
-            app:layout_constraintBottom_toBottomOf="@+id/ashImg"
-            app:layout_constraintEnd_toEndOf="@+id/ashImg"
-            app:layout_constraintStart_toStartOf="@+id/ashImg"
-            app:layout_constraintTop_toTopOf="@+id/ashImg" />
 
-        <ImageView
-            android:id="@+id/greenImg"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="@{() -> onClick.viewClick(ClickFrom.ButtonClick)}"
-            android:background="@drawable/green_btn_bg"
-            app:layout_constraintEnd_toStartOf="@+id/ashImg"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cleanlinessBtnConstraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="@{cleanliness_detail.isButtonVisible ? View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="@+id/cleanlinessItemViewBar"
+            app:layout_constraintTop_toBottomOf="@+id/singleLineView">
 
-        <ImageView
-            android:id="@+id/doneImg"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/done"
-            android:src="@drawable/done"
-            app:layout_constraintBottom_toBottomOf="@+id/greenImg"
-            app:layout_constraintEnd_toEndOf="@+id/greenImg"
-            app:layout_constraintStart_toStartOf="@+id/greenImg"
-            app:layout_constraintTop_toTopOf="@+id/greenImg" />
+            <TextView
+                android:id="@+id/redBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/red_btn_bg"
+                android:gravity="center"
+                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.FirstButtonClick)}"
+                android:text="X"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/orangeBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/orange_btn_bg"
+                android:gravity="center"
+                android:text="-"
+                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.SecondButtonClick)}"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/redBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ashImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.ThirdButtonClick)}"
+                android:background="@drawable/ash_btn_bg"
+                app:layout_constraintEnd_toStartOf="@+id/orangeBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/blockImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ash_btn_bg"
+                android:src="@drawable/block"
+                app:layout_constraintBottom_toBottomOf="@+id/ashImg"
+                app:layout_constraintEnd_toEndOf="@+id/ashImg"
+                app:layout_constraintStart_toStartOf="@+id/ashImg"
+                app:layout_constraintTop_toTopOf="@+id/ashImg" />
+
+            <ImageView
+                android:id="@+id/greenImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="@{() -> onClick.itemClick(cleanliness_detail,ClickFrom.FourthButtonClick)}"
+                android:background="@drawable/green_btn_bg"
+                app:layout_constraintEnd_toStartOf="@+id/ashImg"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/doneImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/done"
+                android:src="@drawable/done"
+                app:layout_constraintBottom_toBottomOf="@+id/greenImg"
+                app:layout_constraintEnd_toEndOf="@+id/greenImg"
+                app:layout_constraintStart_toStartOf="@+id/greenImg"
+                app:layout_constraintTop_toTopOf="@+id/greenImg" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

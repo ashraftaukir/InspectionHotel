@@ -1,13 +1,16 @@
 package com.taukir.test.ui
 
 import android.content.Context
-import android.graphics.Color
+import android.graphics.Canvas
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.taukir.test.R
 import com.taukir.test.adapter.BedRoomsAdapter
@@ -16,22 +19,23 @@ import com.taukir.test.adapter.InspectionAdapter
 import com.taukir.test.databinding.ActivityMainBinding
 import com.taukir.test.databinding.BottomSheetBinding
 import com.taukir.test.interfaces.OnClickListener
-import com.taukir.test.interfaces.OnSwipeTouchListener
 import com.taukir.test.models.CleanlinessModel
-import com.taukir.test.models.InspectionModel
 import com.taukir.test.utils.ClickFrom
+import com.taukir.test.utils.ItemDecorator
+import com.taukir.test.utils.cleanlinessList
+import com.taukir.test.utils.inspectionList
 
 class MainActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private var inspectionList: ArrayList<InspectionModel> = ArrayList()
-    private var cleanlinessList: ArrayList<CleanlinessModel> = ArrayList()
     private lateinit var inspectionAdapter: InspectionAdapter
     private lateinit var cleanlinessAdapter: CleanlinessAdapter
     private lateinit var bedRoomsAdapter: BedRoomsAdapter
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private lateinit var context: Context
     private lateinit var dialogBinding: BottomSheetBinding
+    private lateinit var itemTouchHelper: ItemTouchHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,100 +43,65 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         supportActionBar?.setTitle(R.string.inspection)
         binding.onClick = this
         context = this
+        setUpAdapter()
+    }
 
-        inspectionList.add(
-            InspectionModel(
-                "1",
-                "Weekly Inspection",
-                "Holiday In Express Franklin",
-                "19,Feb"
-            )
-        )
-        inspectionList.add(
-            InspectionModel(
-                "2",
-                "Above-Property Assessment",
-                "Holiday Inn Express Franklin",
-                "20,Feb"
-            )
-        )
-        inspectionList.add(
-            InspectionModel(
-                "3",
-                "Adult Shift Checklist",
-                "Holiday In Express Franklin",
-                "21,Feb"
-            )
-        )
-        inspectionList.add(
-            InspectionModel(
-                "4",
-                "Do Not Disturb-Daily Tracking List",
-                "Holiday In Express Franklin",
-                "21,Feb"
-            )
-        )
-        inspectionList.add(
-            InspectionModel(
-                "5",
-                "Do Not Disturb-Daily Tracking",
-                "Holiday In Express Franklin",
-                "22,Feb"
-            )
-        )
-        inspectionList.add(
-            InspectionModel(
-                "6",
-                "Annual Inspection",
-                "Holiday In Express Franklin",
-                "23,Feb"
-            )
-        )
-
-
-        cleanlinessList.add(
-            CleanlinessModel(
-                "1",
-                "Every inch of room has been sanitized",
-            )
-        )
-        cleanlinessList.add(
-            CleanlinessModel(
-                "2",
-                "Every inch of room has been sanitized",
-            )
-        )
-        cleanlinessList.add(
-            CleanlinessModel(
-                "3",
-                "Every inch of room has been sanitized",
-            )
-        )
-
+    private fun setUpAdapter() {
         inspectionAdapter = InspectionAdapter(this)
         binding.inspectionTypeAdapter = inspectionAdapter
-        binding.executePendingBindings()
         inspectionAdapter.submitList(inspectionList)
-
+        binding.executePendingBindings()
     }
 
     override fun itemClick(itemData: Any, clickFrom: ClickFrom) {
         when (clickFrom.name) {
             ClickFrom.FirstButtonClick.name -> {
-
-                if(itemData.toString() == "red"){
-                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#E45233"))
-                }else if(itemData.toString() == "ash"){
-                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#848485"))
-                }else if(itemData.toString() == "green"){
-                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#55CC28"))
-                }else{
-                    dialogBinding.firstItemViewBar.setBackgroundColor(Color.parseColor("#FFA500"))
+                itemData as CleanlinessModel
+                var index=0
+                for (item in cleanlinessList) {
+                    if (item.id == itemData.id) {
+                        cleanlinessList[index].viewBarValue = "red"
+                        break
+                    }
+                    index++
                 }
-
-                dialogBinding.isCleanlinessBarVisible = true
-                dialogBinding.isCleanlinessButtonVisible = false
-
+                cleanlinessAdapter.notifyDataSetChanged()
+            }
+            ClickFrom.SecondButtonClick.name -> {
+                itemData as CleanlinessModel
+                var index=0
+                for (item in cleanlinessList) {
+                    if (item.id == itemData.id) {
+                        cleanlinessList[index].viewBarValue = "orange"
+                        break
+                    }
+                    index++
+                }
+                cleanlinessAdapter.notifyDataSetChanged()
+            }
+            ClickFrom.ThirdButtonClick.name -> {
+                itemData as CleanlinessModel
+                var index=0
+                for (item in cleanlinessList) {
+                    if (item.id == itemData.id) {
+                        cleanlinessList[index].viewBarValue = "ash"
+                        break
+                    }
+                    index++
+                }
+                cleanlinessAdapter.notifyDataSetChanged()
+            }
+            ClickFrom.FourthButtonClick.name -> {
+                itemData as CleanlinessModel
+                var index=0
+                for (item in cleanlinessList) {
+                    if (item.id == itemData.id) {
+                        cleanlinessList[index].viewBarValue = "green"
+                        break
+                    }
+                    index++
+                }
+                cleanlinessAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -142,6 +111,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         when (clickFrom.name) {
             ClickFrom.ButtonClick.name -> {
 
+
             }
 
             ClickFrom.NavigateToBottomSheet.name -> {
@@ -149,16 +119,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             }
 
             ClickFrom.OpenCloseCleanlinessList.name -> {
-
-                if (dialogBinding.cleannessFirstItemConstraintLayout.isVisible) {
-                    dialogBinding.cleannessFirstItemConstraintLayout.visibility = View.GONE
-                } else {
-                    dialogBinding.cleannessFirstItemConstraintLayout.visibility = View.VISIBLE
-                }
-            }
-
-            ClickFrom.OpenCloseBedroomsList.name -> {
-//                dialogBinding.bedroomsRecyclerView.visibility=View.VISIBLE
+                dialogBinding.cleanlinessRecyclerView.visibility=View.VISIBLE
             }
 
 
@@ -179,21 +140,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         bottomSheetDialog.setCancelable(false)
         bottomSheetDialog.setContentView(dialogBinding.root)
         dialogBinding.onClick = this
-//        setDialogBinding()
+        setDialogBinding()
         bottomSheetDialog.show()
-
-        dialogBinding.cleannessFirstItemConstraintLayout.setOnTouchListener(object :
-            OnSwipeTouchListener() {
-            override fun onSwipeLeft() {
-                dialogBinding.cleanlinessBtnConstraintLayout.visibility = View.VISIBLE
-            }
-
-            override fun onSwipeRight() {
-
-            }
-        })
-
-
     }
 
     private fun setDialogBinding() {
@@ -202,14 +150,76 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         dialogBinding.onClick = this
         cleanlinessAdapter.submitList(cleanlinessList)
 
-
-        bedRoomsAdapter = BedRoomsAdapter(this)
-        dialogBinding.bedRoomsAdapter = bedRoomsAdapter
-        dialogBinding.onClick = this
-        bedRoomsAdapter.submitList(cleanlinessList)
+        initializeCleanlinessListener()
         dialogBinding.executePendingBindings()
+    }
 
+    private fun initializeCleanlinessListener() {
+        val simpleCallback = object :
+            ItemTouchHelper.SimpleCallback(
+                0,
+                ItemTouchHelper.LEFT
+            ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = false
 
-        dialogBinding.executePendingBindings()
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+
+                val colorAlert =
+                    ContextCompat.getColor(this@MainActivity, R.color.purple_700)
+                val teal200 =
+                    ContextCompat.getColor(this@MainActivity, R.color.purple_700)
+                val defaultWhiteColor =
+                    ContextCompat.getColor(this@MainActivity, R.color.white)
+
+                // This is where to start decorating
+                ItemDecorator.Builder(c, recyclerView, viewHolder, dX, actionState).set(
+                    backgroundColorFromStartToEnd = colorAlert,
+                    backgroundColorFromEndToStart = teal200,
+                    textFromStartToEnd = "",
+                    textFromEndToStart = "",
+                    textColorFromStartToEnd = defaultWhiteColor,
+                    textColorFromEndToStart = defaultWhiteColor,
+                    iconTintColorFromStartToEnd = defaultWhiteColor,
+                    iconTintColorFromEndToStart = defaultWhiteColor,
+                    iconResIdFromStartToEnd = R.drawable.ash_btn_bg,
+                    iconResIdFromEndToStart = R.drawable.green_btn_bg
+                )
+
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                when (direction) {
+                    ItemTouchHelper.LEFT -> {
+                        cleanlinessList[position].isButtonVisible = true
+                        cleanlinessAdapter.notifyDataSetChanged()
+                    }
+                }
+                cleanlinessAdapter.notifyItemChanged(position)
+            }
+        }
+        itemTouchHelper = ItemTouchHelper(simpleCallback)
+        itemTouchHelper.attachToRecyclerView(dialogBinding.cleanlinessRecyclerView)
     }
 }

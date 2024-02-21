@@ -38,17 +38,17 @@ class BedRoomsAdapter(private var clickListener: OnClickListener) :
         val cleanlinessItem = getItem(position)
         holder.binding.cleanlinessDetail = cleanlinessItem
         holder.binding.onClick = clickListener
-        holder.binding.bedroomsItemConstraintLayout.setOnTouchListener(object : OnSwipeTouchListener() {
-            override fun onSwipeLeft() {
-                Log.d("ViewSwipe", "onSwipeLeft: ")
-                holder.binding.differentBtnConstraintLayout.visibility = View.VISIBLE
-            }
-
-            override fun onSwipeRight() {
-                Log.d("ViewSwipe", "onSwipeRight")
-
-            }
-        })
+//        holder.binding.bedroomsItemConstraintLayout.setOnTouchListener(object : OnSwipeTouchListener() {
+//            override fun onSwipeLeft() {
+//                Log.d("ViewSwipe", "onSwipeLeft: ")
+//                holder.binding.differentBtnConstraintLayout.visibility = View.VISIBLE
+//            }
+//
+//            override fun onSwipeRight() {
+//                Log.d("ViewSwipe", "onSwipeRight")
+//
+//            }
+//        })
 
     }
 
