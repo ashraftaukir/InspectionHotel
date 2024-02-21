@@ -10,4 +10,5 @@
     <string name="cleanliness">Cleanliness</string>
     <string name="bedrooms">Bedrooms</string>
     <string name="every_inch_of_room_has_been_sanitized">Every inch of room has been sanitized</string>
+    <string name="complete">Complete</string>
 </resources>

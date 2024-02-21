@@ -14,6 +14,7 @@
     <color name="red_btn">#E45233</color>
     <color name="orange_btn">#FFA500</color>
     <color name="new_design_border_color">#9CDABB</color>
+    <color name="btn_color">#3390FF</color>
 
 
 </resources>
